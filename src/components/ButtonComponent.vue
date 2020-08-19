@@ -1,6 +1,12 @@
 <template>
     <div class="button">
-        <input :id="id" type="button" :value="text" v-on:click="buttonClick"/>
+        <input
+            :id="id"
+            :value="text"
+            :disabled="!active"
+            v-on:click="buttonClick"
+            type="button"
+        />
     </div>
 </template>
 
@@ -27,6 +33,10 @@ export default {
             type: String,
             required: true,
         },
+        active: {
+            type: Boolean,
+            default: true,
+        }
     },
     methods: {
         buttonClick: function() {

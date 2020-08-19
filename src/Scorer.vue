@@ -17,6 +17,7 @@
         <button-component
             :text="'Submit score'"
             :id="'submit-score'"
+            :active="false"
             v-on:input="submitScore"
         ></button-component>
     </div>
