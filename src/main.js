@@ -1,4 +1,4 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import Scorer from './Scorer.vue'
 
-createApp(App).mount('#app')
+createApp(Scorer).mount('#app')

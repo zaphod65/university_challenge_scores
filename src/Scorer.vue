@@ -7,17 +7,17 @@
         <button-component
             :text="'Starter'"
             :id="'starter'"
-            v-on:starter="addStarter"
+            v-on:input="addStarter"
         ></button-component>
         <button-component
             :text="'Bonus'"
             :id="'bonus'"
-            v-on:bonus="addBonus"
+            v-on:input="addBonus"
         ></button-component>
         <button-component
             :text="'Submit score'"
             :id="'submit-score'"
-            v-on:submit-score="submitScore"
+            v-on:input="submitScore"
         ></button-component>
     </div>
 </template>
@@ -28,7 +28,7 @@
 import ButtonComponent from './components/ButtonComponent.vue'
 
 export default {
-    name: 'App',
+    name: 'Scorer',
     data: function () {
         return {
             starters: 0,
