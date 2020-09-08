@@ -2,8 +2,8 @@
     <div id="app">
         <h2>University Challenge Scorer!</h2>
         <h3>Total score: {{ totalScore }}</h3>
-        <h4>Starters: {{ starters }}</h4>
-        <h4>Bonuses: {{ bonuses }}</h4>
+        <h4>Starters: {{ starter }}</h4>
+        <h4>Bonuses: {{ bonus }}</h4>
         <button-component
             :text="'Starter'"
             :id="'starter'"
@@ -13,6 +13,12 @@
             :text="'Bonus'"
             :id="'bonus'"
             v-on:input="addBonus"
+        ></button-component>
+        <button-component
+            :text="'Undo'"
+            :id="'undo'"
+            :active="true"
+            v-on:input="undo"
         ></button-component>
         <button-component
             :text="'Submit score'"
@@ -32,21 +38,34 @@ export default {
     name: 'Scorer',
     data: function () {
         return {
-            starters: 0,
-            bonuses: 0,
+            starter: 0,
+            bonus: 0,
+            actionStack: [],
         };
     },
     computed: {
         totalScore: function() {
-            return (this.starters * 10) + (this.bonuses * 5);
+            return (this.starter * 10) + (this.bonus * 5);
         }
     },
     methods: {
         addStarter: function () {
-            this.starters++;
+            this.starter++;
+            this.actionStack.push({
+                action: 'starter',
+            });
         },
         addBonus: function () {
-            this.bonuses++;
+            this.bonus++;
+            this.actionStack.push({
+                action: 'bonus',
+            });
+        },
+        undo: function () {
+            let lastAction = this.actionStack.pop();
+            if (!(typeof lastAction === 'undefined')) {
+                this[lastAction.action]--;
+            }
         },
         submitScore: function () {
             console.log("Score submit clicked");
