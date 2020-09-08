@@ -17,7 +17,6 @@
         <button-component
             :text="'Undo'"
             :id="'undo'"
-            :active="true"
             v-on:input="undo"
         ></button-component>
         <button-component
