@@ -41,8 +41,7 @@ export default {
     methods: {
         buttonClick: function() {
             this.$emit(
-                'input',
-                document.querySelector(`#${this.id}`).id
+                'input'
             );
         }
     },
