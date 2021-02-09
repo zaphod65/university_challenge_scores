@@ -20,6 +20,11 @@
             v-on:input="undo"
         ></button-component>
         <button-component
+            :text="'Reset score'"
+            :id="'reset'"
+            v-on:input="resetScores"
+        ></button-component>
+        <button-component
             :text="'Submit score'"
             :id="'submit-score'"
             :active="false"
@@ -65,6 +70,10 @@ export default {
             if (!(typeof lastAction === 'undefined')) {
                 this[lastAction.action]--;
             }
+        },
+        resetScores: function () {
+            this.starter = 0;
+            this.bonus = 0;
         },
         submitScore: function () {
             console.log("Score submit clicked");
