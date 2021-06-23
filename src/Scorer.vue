@@ -74,6 +74,7 @@ export default {
         resetScores: function () {
             this.starter = 0;
             this.bonus = 0;
+            this.actionStack = [];
         },
         submitScore: function () {
             console.log("Score submit clicked");
