@@ -27,14 +27,13 @@
         <button-component
             :text="'Submit score'"
             :id="'submit-score'"
-            :active="false"
             v-on:input="submitScore"
         ></button-component>
     </div>
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 
 import ButtonComponent from './components/ButtonComponent.vue'
 
@@ -77,11 +76,12 @@ export default {
             this.actionStack = [];
         },
         submitScore: function () {
-            console.log("Score submit clicked");
-            // axios.get('https://jsonplaceholder.typicode.com/users')
-            //     .then(res => {
-            //         console.log(res.data);
-            //     })
+            axios.post('https://kdvqawqelj.execute-api.eu-west-2.amazonaws.com/record_score', {
+                name: 'placeholder_name',
+                score: this.computed.totalScore(),
+            }).then(res => {
+                console.log(res.data);
+            })
         }
     },
     components: {
