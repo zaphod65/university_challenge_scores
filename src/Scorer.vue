@@ -77,8 +77,10 @@ export default {
         },
         submitScore: function () {
             axios.post('https://kdvqawqelj.execute-api.eu-west-2.amazonaws.com/record_score', {
-                name: 'placeholder_name',
-                score: this.totalScore,
+                score: {
+                    name: 'placeholder_name',
+                    score: this.totalScore,
+                },
             }).then(res => {
                 console.log(res.data);
             })
