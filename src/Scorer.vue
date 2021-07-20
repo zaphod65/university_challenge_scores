@@ -4,6 +4,11 @@
         <h3>Total score: {{ totalScore }}</h3>
         <h4>Starters: {{ starter }}</h4>
         <h4>Bonuses: {{ bonus }}</h4>
+        <text-input-component
+            :placeholder="'Your name...'"
+            :id="'name'"
+            v-on:input="setName"
+        ></text-input-component>
         <button-component
             :text="'Starter'"
             :id="'starter'"
@@ -36,6 +41,7 @@
 import axios from 'axios';
 
 import ButtonComponent from './components/ButtonComponent.vue'
+import TextInputComponent from './components/TextInputComponent.vue'
 
 export default {
     name: 'Scorer',
@@ -44,6 +50,7 @@ export default {
             starter: 0,
             bonus: 0,
             actionStack: [],
+            name: '',
         };
     },
     computed: {
@@ -76,18 +83,23 @@ export default {
             this.actionStack = [];
         },
         submitScore: function () {
+            // TODO: probably abstract this API URL away somehow?
             axios.post('https://kdvqawqelj.execute-api.eu-west-2.amazonaws.com/record_score', {
                 score: {
-                    name: 'placeholder_name',
+                    name: this.name,
                     score: this.totalScore,
                 },
             }).then(res => {
                 console.log(res.data);
             })
-        }
+        },
+        setName: function (event) {
+            this.name = event.name;
+        },
     },
     components: {
         ButtonComponent,
+        TextInputComponent,
     }
 }
 </script>
