@@ -93,7 +93,9 @@ export default {
             }).then(res => {
                 console.log(res.data);
                 alert('Your score has been recorded! :)');
-            })
+            }).catch(res => {
+                alert('Something went wrong recording your score, try again?');
+            });
         },
         setName: function (event) {
             this.name = event.name;
