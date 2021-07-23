@@ -94,6 +94,7 @@ export default {
                 console.log(res.data);
                 alert('Your score has been recorded! :)');
             }).catch(res => {
+                console.log(res);
                 alert('Something went wrong recording your score, try again?');
             });
         },
