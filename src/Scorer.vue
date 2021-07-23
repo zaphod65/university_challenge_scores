@@ -40,6 +40,7 @@
 <script>
 import axios from 'axios';
 
+// TODO: rename these so they don't have 'Component' in the actual file name, it's completely redundant
 import ButtonComponent from './components/ButtonComponent.vue'
 import TextInputComponent from './components/TextInputComponent.vue'
 
@@ -91,6 +92,7 @@ export default {
                 },
             }).then(res => {
                 console.log(res.data);
+                alert('Your score has been recorded! :)');
             })
         },
         setName: function (event) {
