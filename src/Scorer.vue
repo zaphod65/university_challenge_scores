@@ -86,6 +86,7 @@ export default {
         submitScore: function () {
             if (!this.name) {
                 alert('Please enter a name :)');
+                return;
             }
             // TODO: probably abstract this API URL away somehow?
             axios.post('https://kdvqawqelj.execute-api.eu-west-2.amazonaws.com/record_score', {
