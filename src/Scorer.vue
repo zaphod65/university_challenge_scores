@@ -84,11 +84,16 @@ export default {
             this.actionStack = [];
         },
         submitScore: function () {
+            if (!this.name) {
+                alert('Please enter a name :)');
+            }
             // TODO: probably abstract this API URL away somehow?
             axios.post('https://kdvqawqelj.execute-api.eu-west-2.amazonaws.com/record_score', {
                 score: {
                     name: this.name,
                     score: this.totalScore,
+                    starters: this.starter,
+                    bonuses: this.bonus,
                 },
             }).then(res => {
                 console.log(res.data);
