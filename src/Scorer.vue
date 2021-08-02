@@ -4,45 +4,44 @@
         <h3>Total score: {{ totalScore }}</h3>
         <h4>Starters: {{ starter }}</h4>
         <h4>Bonuses: {{ bonus }}</h4>
-        <text-input-component
+        <text-input
             :placeholder="'Your name...'"
             :id="'name'"
             v-on:input="setName"
-        ></text-input-component>
-        <button-component
+        ></text-input>
+        <custom-button
             :text="'Starter'"
             :id="'starter'"
             v-on:input="addStarter"
-        ></button-component>
-        <button-component
+        ></custom-button>
+        <custom-button
             :text="'Bonus'"
             :id="'bonus'"
             v-on:input="addBonus"
-        ></button-component>
-        <button-component
+        ></custom-button>
+        <custom-button
             :text="'Undo'"
             :id="'undo'"
             v-on:input="undo"
-        ></button-component>
-        <button-component
+        ></custom-button>
+        <custom-button
             :text="'Reset score'"
             :id="'reset'"
             v-on:input="resetScores"
-        ></button-component>
-        <button-component
+        ></custom-button>
+        <custom-button
             :text="'Submit score'"
             :id="'submit-score'"
             v-on:input="submitScore"
-        ></button-component>
+        ></custom-button>
     </div>
 </template>
 
 <script>
 import axios from 'axios';
 
-// TODO: rename these so they don't have 'Component' in the actual file name, it's completely redundant
-import ButtonComponent from './components/ButtonComponent.vue'
-import TextInputComponent from './components/TextInputComponent.vue'
+import CustomButton from './components/CustomButton.vue'
+import TextInput from './components/TextInput.vue'
 
 export default {
     name: 'Scorer',
@@ -105,12 +104,12 @@ export default {
             });
         },
         setName: function (event) {
-            this.name = event.name;
+            this.name = event.name.trim();
         },
     },
     components: {
-        ButtonComponent,
-        TextInputComponent,
+        CustomButton,
+        TextInput,
     }
 }
 </script>
