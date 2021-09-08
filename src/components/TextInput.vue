@@ -18,7 +18,7 @@
 
 <script>
 export default {
-    name: "text-input-component",
+    name: 'text-input',
     data: function () {
         return {
             value: '',

@@ -23,7 +23,7 @@ input {
 
 <script>
 export default {
-    name: "button-component",
+    name: 'custom-button',
     props: {
         text: {
             type: String,
