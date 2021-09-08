@@ -5,7 +5,7 @@
             :placeholder="placeholder"
             v-on:blur="sendValue"
             type="text"
-            v-model="name"
+            v-model="value"
         />
     </div>
 </template>
@@ -21,7 +21,7 @@ export default {
     name: "text-input-component",
     data: function () {
         return {
-            name: '',
+            value: '',
         }
     },
     props: {
@@ -37,9 +37,9 @@ export default {
     methods: {
         sendValue: function() {
             this.$emit(
-                'input',
+                'value-send',
                 {
-                    name: this.name,
+                    value: this.value,
                 },
             );
         }

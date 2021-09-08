@@ -7,7 +7,7 @@
         <text-input
             :placeholder="'Your name...'"
             :id="'name'"
-            v-on:input="setName"
+            v-on:value-send="setName"
         ></text-input>
         <custom-button
             :text="'Starter'"
@@ -104,7 +104,7 @@ export default {
             });
         },
         setName: function (event) {
-            this.name = event.name.trim();
+            this.name = event.value.trim();
         },
     },
     components: {
